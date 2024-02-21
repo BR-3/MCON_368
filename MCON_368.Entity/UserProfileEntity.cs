@@ -8,6 +8,7 @@ namespace MCON_368.Entity
 {
     public class UserProfileEntity
     {
+        public string SQLUserName { get; set; }
         public int UserProfileKey { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

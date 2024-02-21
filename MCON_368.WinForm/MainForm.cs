@@ -10,6 +10,10 @@ namespace MCON_368.WinForm
             InitializeComponent();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
@@ -33,17 +37,7 @@ namespace MCON_368.WinForm
 
         }
 
-        private void secondNumberTextBox_TextChanged(string sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void firstNumberTextBox_TextChanged_1(object sender, EventArgs e)
+        private void secondNumberTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

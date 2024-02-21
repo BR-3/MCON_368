@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCON_368.Entity
 {
-    internal class GroupChatEntity
+    public class GroupChatEntity
     {
         public int GroupChatKey { get; set; }
         public string GroupName { get; set; }
@@ -15,6 +15,7 @@ namespace MCON_368.Entity
         public bool ActiveInd {  get; set; }
         public int NumberOfUsers {  get; set; }
         public int NumberOfChats { get; set; }
+        public int MetroColorKey { get; set; }
         public MetroColorEntity ChatColor { get; set; }
     }
 }

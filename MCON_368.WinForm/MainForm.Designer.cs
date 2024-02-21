@@ -45,20 +45,21 @@
             // 
             // firstNumberTextBox
             // 
-            firstNumberTextBox.Location = new Point(327, 146);
+            firstNumberTextBox.Location = new Point(327, 86);
             firstNumberTextBox.Name = "firstNumberTextBox";
             firstNumberTextBox.Size = new Size(125, 27);
             firstNumberTextBox.TabIndex = 1;
-            firstNumberTextBox.Text = "4";
-            firstNumberTextBox.TextChanged += firstNumberTextBox_TextChanged_1;
+            firstNumberTextBox.TextChanged += firstNumberTextBox_TextChanged;
+            firstNumberTextBox.Leave += TextBoxLeaveEvent;
             // 
             // secondNumberTextBox
             // 
-            secondNumberTextBox.Location = new Point(327, 92);
+            secondNumberTextBox.Location = new Point(327, 135);
             secondNumberTextBox.Name = "secondNumberTextBox";
             secondNumberTextBox.Size = new Size(125, 27);
             secondNumberTextBox.TabIndex = 0;
-            secondNumberTextBox.Text = "3";
+            secondNumberTextBox.TextChanged += secondNumberTextBox_TextChanged;
+            secondNumberTextBox.Leave += TextBoxLeaveEvent;
             // 
             // calculate_Button
             // 
@@ -68,6 +69,7 @@
             calculate_Button.TabIndex = 3;
             calculate_Button.Text = "Calculate";
             calculate_Button.UseVisualStyleBackColor = true;
+            calculate_Button.Click += calculateButton_Click;
             // 
             // MainForm
             // 
@@ -79,7 +81,7 @@
             Controls.Add(firstNumberTextBox);
             Controls.Add(secondNumberTextBox);
             Name = "MainForm";
-            Text = "3";
+            Text = "Main Form";
             Load += MainForm_Load;
             ResumeLayout(false);
             PerformLayout();

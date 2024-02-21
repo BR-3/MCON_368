@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCON_368.Entity
 {
-    internal class MetroColorEntity
+    public class MetroColorEntity
     {
         public int MetroColorKey {  get; set; }
         public string HexNumber {  get; set; }
