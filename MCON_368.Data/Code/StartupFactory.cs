@@ -34,15 +34,13 @@ namespace MCON_368.Data.Code
 
         private static List<GroupChatEntity> PopulateMetroColorEntities(StartUpObjectEntity returnData)
         {
-            foreach(GroupChatEntity newGroupChat in returnData.GroupChatList)
+            foreach (GroupChatEntity newGroupChat in returnData.GroupChatList)
             {
-                foreach(MetroColorEntity newMetroColor in returnData.MetroColorList)
+                List<MetroColorEntity> metroColorList = returnData.MetroColorList.Where(x => x.MetroColorKey == newGroupChat.MetroColorKey).ToList();
+                foreach(MetroColorEntity newMetroColor in metroColorList)
                 {
-                    if(newMetroColor.MetroColorKey == newGroupChat.MetroColorKey)
-                    {
-                        newGroupChat.ChatColor = newMetroColor;
-                        break;
-                    }
+                     newGroupChat.ChatColor = newMetroColor;
+                     break;
                 }
             }
             return returnData.GroupChatList;
