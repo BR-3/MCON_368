@@ -1,12 +1,13 @@
-﻿using System;
+﻿using MCON_368.Data.Code;
+using MCON_368.Entity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MCON_368.Entity;
 
-namespace MCON_368.Data.Code
+namespace MCON368.Data.Code
 {
     public class StartupFactory
     {
@@ -20,9 +21,8 @@ namespace MCON_368.Data.Code
             {
                 ds = DataFactory.GetDataSet(strSQL, "StartUpData");
                 returnData.UserList = LoadUserList(ds.Tables[0]);
-                returnData.GroupChatList = LoadGroupChatList(ds.Tables[1]);
                 returnData.MetroColorList = LoadMetroColorList(ds.Tables[2]);
-                returnData.GroupChatList = PopulateMetroColorEntities(returnData);
+                returnData.GroupChatList = LoadGroupChatList(ds.Tables[1], returnData.MetroColorList);
             }
             catch (Exception ex)
             {
@@ -30,23 +30,7 @@ namespace MCON_368.Data.Code
             }
             return returnData;
         }
-
-
-        private static List<GroupChatEntity> PopulateMetroColorEntities(StartUpObjectEntity returnData)
-        {
-            foreach (GroupChatEntity newGroupChat in returnData.GroupChatList)
-            {
-                List<MetroColorEntity> metroColorList = returnData.MetroColorList.Where(x => x.MetroColorKey == newGroupChat.MetroColorKey).ToList();
-                foreach(MetroColorEntity newMetroColor in metroColorList)
-                {
-                     newGroupChat.ChatColor = newMetroColor;
-                     break;
-                }
-            }
-            return returnData.GroupChatList;
-        }
-
-        private static List<GroupChatEntity> LoadGroupChatList(DataTable dataTable)
+        private static List<GroupChatEntity> LoadGroupChatList(DataTable dataTable, List<MetroColorEntity> colorList)
         {
             List<GroupChatEntity> returnData = new();
             foreach (DataRow newRow in dataTable.Rows)
@@ -56,6 +40,7 @@ namespace MCON_368.Data.Code
                 newItem.MetroColorKey = Convert.ToInt32(newRow["MetroColorKey"]);
                 newItem.ChatCreatedDateTime = Convert.ToDateTime(newRow["CreatedDateTime"]);
                 newItem.GroupName = newRow["Header"].ToString();
+                newItem.ChatColor = colorList.Where(x => x.MetroColorKey == newItem.MetroColorKey).FirstOrDefault();
                 returnData.Add(newItem);
             }
             return returnData;
@@ -99,4 +84,3 @@ namespace MCON_368.Data.Code
         }
     }
 }
-
