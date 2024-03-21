@@ -1,4 +1,5 @@
 using MCON_368.WinForm.Code;
+using MCON_368.Entity;
 
 namespace MCON_368.WinForm
 {
@@ -12,34 +13,32 @@ namespace MCON_368.WinForm
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            PopLoginForm();
         }
-
-        private void calculateButton_Click(object sender, EventArgs e)
+        private void PopLoginForm()
         {
-            DoCalculations();
+            if (GlobalSettingsEntity.CurrentUser == null || GlobalSettingsEntity.CurrentUser.UserProfileKey == 0)
+            {
+                LoginForm loginPopup = new();
+                loginPopup.FormClosed += LoginFormClosed;
+                loginPopup.ShowDialog();
+            }
         }
-        private void DoCalculations()
+        private void LoginFormClosed(object? sender, FormClosedEventArgs e)
         {
-            if (!LocalFunctions.IsNumeric(firstNumberTextBox.Text)) { resultsLabel.Text = "The first number must be numeric."; resultsLabel.ForeColor = Color.Red; }
-            else if (!LocalFunctions.IsNumeric(secondNumberTextBox.Text)) { resultsLabel.Text = "The second number must be numeric."; resultsLabel.ForeColor = Color.Red; }
-            else { resultsLabel.Text = (Convert.ToInt32(firstNumberTextBox.Text) * Convert.ToInt32(secondNumberTextBox.Text)).ToString(); resultsLabel.ForeColor = Color.Black; }
-        }
-
-
-        private void TextBoxLeaveEvent(object sender, EventArgs e)
-        {
-            DoCalculations();
-        }
-
-        private void firstNumberTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void secondNumberTextBox_TextChanged(object sender, EventArgs e)
-        {
-
+            if (GlobalSettingsEntity.CurrentUser != null && GlobalSettingsEntity.CurrentUser.UserProfileKey > 0)
+            {
+                this.Text = "MCON 368 ChatBot - Welcome Back, " + GlobalSettingsEntity.CurrentUser.FirstName + " " + GlobalSettingsEntity.CurrentUser.LastName;
+                this.Refresh();
+                for (int i = 1; i < 51; i++)
+                {
+                    panelLayout.Controls.Add(new Button { Text = "Button " + i}) ;
+                }
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
     }
 

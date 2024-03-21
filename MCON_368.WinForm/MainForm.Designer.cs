@@ -28,70 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            resultsLabel = new Label();
-            firstNumberTextBox = new TextBox();
-            secondNumberTextBox = new TextBox();
-            calculate_Button = new Button();
+            panelLayout = new FlowLayoutPanel();
             SuspendLayout();
             // 
-            // resultsLabel
+            // panelLayout
             // 
-            resultsLabel.AutoSize = true;
-            resultsLabel.Location = new Point(364, 195);
-            resultsLabel.Name = "resultsLabel";
-            resultsLabel.Size = new Size(50, 20);
-            resultsLabel.TabIndex = 2;
-            resultsLabel.Text = "label1";
-            // 
-            // firstNumberTextBox
-            // 
-            firstNumberTextBox.Location = new Point(327, 86);
-            firstNumberTextBox.Name = "firstNumberTextBox";
-            firstNumberTextBox.Size = new Size(125, 27);
-            firstNumberTextBox.TabIndex = 1;
-            firstNumberTextBox.TextChanged += firstNumberTextBox_TextChanged;
-            firstNumberTextBox.Leave += TextBoxLeaveEvent;
-            // 
-            // secondNumberTextBox
-            // 
-            secondNumberTextBox.Location = new Point(327, 135);
-            secondNumberTextBox.Name = "secondNumberTextBox";
-            secondNumberTextBox.Size = new Size(125, 27);
-            secondNumberTextBox.TabIndex = 0;
-            secondNumberTextBox.TextChanged += secondNumberTextBox_TextChanged;
-            secondNumberTextBox.Leave += TextBoxLeaveEvent;
-            // 
-            // calculate_Button
-            // 
-            calculate_Button.Location = new Point(327, 228);
-            calculate_Button.Name = "calculate_Button";
-            calculate_Button.Size = new Size(125, 29);
-            calculate_Button.TabIndex = 3;
-            calculate_Button.Text = "Calculate";
-            calculate_Button.UseVisualStyleBackColor = true;
-            calculate_Button.Click += calculateButton_Click;
+            panelLayout.Location = new Point(12, 12);
+            panelLayout.Name = "panelLayout";
+            panelLayout.Size = new Size(776, 426);
+            panelLayout.TabIndex = 0;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(calculate_Button);
-            Controls.Add(resultsLabel);
-            Controls.Add(firstNumberTextBox);
-            Controls.Add(secondNumberTextBox);
+            Controls.Add(panelLayout);
             Name = "MainForm";
             Text = "Main Form";
             Load += MainForm_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label resultsLabel;
-        private TextBox firstNumberTextBox;
-        private TextBox secondNumberTextBox;
-        private Button calculate_Button;
+        private FlowLayoutPanel panelLayout;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using MCON_368.Entity;
+using MCON368.Data.Code;
 
 namespace MCON_368.Data.Code
 {
