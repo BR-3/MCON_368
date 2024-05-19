@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MCON_368.Entity
 {
-    internal class ChatEntity
+    public class ChatEntity
     {
         public int GroupChatKey { get; set; }
         public string GroupName { get; set; }

@@ -6,6 +6,9 @@ namespace MCON_368.Data.Code
 {
     public class UserFactory
     {
+        /*1) validate username: does it exist
+            2) validate password
+            3) validate activeInt*/
         // if all 3 are valid
         //1) populate userprofileentity with return data
         //2) call getStartupObjects
@@ -17,6 +20,7 @@ namespace MCON_368.Data.Code
             UserProfileEntity returnData = new();
             try
             {
+                strSQL = string.Format(strSQL, userName);
                 ds = DataFactory.GetDataSet(strSQL, "UserInformation");
                 returnData.UserName = userName;
                 returnData.Password = passWord;
@@ -51,6 +55,7 @@ namespace MCON_368.Data.Code
             returnData.UserName = newRow["UserName"].ToString();
             returnData.Password = newRow["Password"].ToString();
             returnData.LastRefreshed = DateTime.Now;
+            returnData.DisplayName = returnData.FirstName + " " + returnData.LastName;
             return returnData;
         }
 

@@ -10,7 +10,7 @@ namespace MCON_368.Data.Code
 {
     public class DataFactory
     {
-        private static readonly string connectionString = "Data Source=localhost;Initial Catalog =MCON368; Integrated Security = True;TrustServerCertificate=True";
+        private static readonly string connectionString = "Data Source=LAPTOP-E134A62S\\SQLEXPRESS;Initial Catalog =MCON368; Integrated Security = True;TrustServerCertificate=True";
         public static DataSet GetDataSet(string strSQL, string tableName)
         {
             try

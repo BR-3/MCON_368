@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             userNameInput = new TextBox();
             passwordInput = new TextBox();
             userNameLabel = new Label();
@@ -39,19 +40,25 @@
             // 
             // userNameInput
             // 
+            userNameInput.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             userNameInput.Location = new Point(48, 183);
             userNameInput.Name = "userNameInput";
             userNameInput.PlaceholderText = "Username";
             userNameInput.Size = new Size(337, 27);
             userNameInput.TabIndex = 1;
+            userNameInput.KeyDown += LogInOnEnter;
             // 
             // passwordInput
             // 
+            passwordInput.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            passwordInput.ImeMode = ImeMode.Disable;
             passwordInput.Location = new Point(48, 237);
             passwordInput.Name = "passwordInput";
+            passwordInput.PasswordChar = '*';
             passwordInput.PlaceholderText = "Password";
             passwordInput.Size = new Size(337, 27);
             passwordInput.TabIndex = 2;
+            passwordInput.KeyDown += LogInOnEnter;
             // 
             // userNameLabel
             // 
@@ -117,8 +124,9 @@
             Controls.Add(userNameInput);
             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginForm";
-            Text = "LoginForm";
+            Text = "MCON 368 - Chat Window Login";
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();

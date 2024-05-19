@@ -59,7 +59,7 @@ namespace MCON368.Data.Code
                 newItem.FirstName = newRow["FirstName"].ToString();
                 newItem.LastName = newRow["LastName"].ToString();
                 newItem.UserProfileKey = Convert.ToInt32(newRow["UserProfileKey"]);
-                newItem.SQLUserName = newRow["SQLUserName"].ToString();
+                //newItem.SQLUserName = newRow["SQLUserName"].ToString();
                 newItem.UserName = newRow["UserName"].ToString();
                 newItem.Password = newRow["Password"].ToString();
                 newItem.LastRefreshed = DateTime.Now;
