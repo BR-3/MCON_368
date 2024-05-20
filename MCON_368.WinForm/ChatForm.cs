@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -110,7 +111,7 @@ namespace MCON_368.WinForm
                 FileSystem.Print(1, theLine + Environment.NewLine);
             }
             FileSystem.FileClose(1);
-            //Process.Start("notepad", fileName);
+            Process.Start("notepad", fileName);
 
         }
 
